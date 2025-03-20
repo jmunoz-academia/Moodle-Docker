@@ -38,32 +38,38 @@ Este repositorio contiene la configuración necesaria para desplegar un entorno 
 El archivo `docker-compose.yml` incluye la configuración de los servicios:
 
 ```yaml
-version: '3.8'
-
+name: docker-git
 services:
-  web:
-    image: php:8.2-apache
-    ports:
-      - "80:80"
+  mysql:
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    image: mysql:latest
     volumes:
-      - ./moodle:/var/www/html
-    environment:
-      - MOODLE_DOCKER=true
-
-  db:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: moodle
-      MYSQL_USER: moodle
-      MYSQL_PASSWORD: moodle
+      - mysql_data:/var/lib/mysql  # Para persistir datos de la base de datos
+    networks:
+      - app-network  # Definir red para permitir la comunicación entre servicios
 
   php:
-    image: php:8.2-fpm
+    container_name: apache
+    build:
+      context: ./php-docker
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
     volumes:
-      - ./moodle:/var/www/html
-    environment:
-      - MOODLE_DOCKER=true
+      - ./public-html:/var/www/html
+      - ./moodledata:/var/www/moodledata
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+
+networks:
+  app-network:  # Definir la red compartida para los contenedores
+
+volumes:
+  mysql_data:  # Definir volumen persistente para la base de datos
 ```
 
 ## Extensiones de PHP
