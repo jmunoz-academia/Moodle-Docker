@@ -19,20 +19,13 @@ Este repositorio contiene la configuración necesaria para desplegar un entorno 
    git clone https://github.com/jmunoz-academia/Moodle-Docker.git
    cd Moodle-Docker
    ```
-
-2. Copia el archivo `config.docker-template.php` a `config.docker.php` y edita los valores según tus necesidades:
-
-   ```bash
-   cp config.docker-template.php config.docker.php
-   ```
-
-3. Construye y levanta los contenedores:
+2. Construye y levanta los contenedores:
 
    ```bash
-   docker-compose up --build
+   docker-compose up -d
    ```
 
-4. Accede a Moodle desde tu navegador en `http://localhost`.
+4. Accede a Moodle desde tu navegador en `http://localhost/moodle`.
 
 ## Servicios
 
@@ -86,11 +79,3 @@ El contenedor de PHP 8.2 incluye las siguientes extensiones necesarias para Mood
 - curl
 - mbstring
 - zip
-
-## Contribuciones
-
-Las contribuciones son bienvenidas. Por favor, abre un issue o un pull request para discutir cualquier cambio que desees realizar.
-
-## Licencia
-
-Este proyecto está licenciado bajo los términos de la licencia MIT. Consulta el archivo `LICENSE` para más detalles.
