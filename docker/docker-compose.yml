@@ -1,0 +1,32 @@
+name: docker-git
+services:
+  mysql:
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    image: mysql:latest
+    volumes:
+      - mysql_data:/var/lib/mysql  # Para persistir datos de la base de datos
+    networks:
+      - app-network  # Definir red para permitir la comunicación entre servicios
+
+  php:
+    container_name: apache
+    build:
+      context: ./php-docker
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - ./public-html:/var/www/html
+      - ./moodledata:/var/www/moodledata
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+
+networks:
+  app-network:  # Definir la red compartida para los contenedores
+
+volumes:
+  mysql_data:  # Definir volumen persistente para la base de datos
