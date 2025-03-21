@@ -119,6 +119,13 @@ volumes:
   mysql_data:
 ```
 
+## Servicios
+
+- **Apache**: Servidor web para alojar Moodle.
+- **MySQL**: Base de datos para almacenar la información de Moodle.
+- **PHP 8.3**: Versión de PHP con todas las extensiones necesarias para Moodle.
+
+
 ## Extensiones de PHP
 
 El contenedor de PHP 8.3 incluye:
@@ -131,16 +138,3 @@ El contenedor de PHP 8.3 incluye:
 - `curl`
 - `mbstring`
 - `zip`
-```
-
-### Instrucciones para subir como `README.md`
-1. Copia el contenido anterior en un archivo llamado `README.md`.
-2. Colócalo en la raíz de tu repositorio (`Moodle-Docker`).
-3. Súbelo a GitHub con:
-   ```bash
-   git add README.md
-   git commit -m "Agrega README.md con instrucciones"
-   git push origin main
-   ```
-
-Este formato es compatible con GitHub, incluye enlaces útiles (como el de Docker Desktop), y usa bloques de código para comandos y configuraciones, lo que lo hace fácil de leer y seguir. ¡Listo para tu repositorio!
