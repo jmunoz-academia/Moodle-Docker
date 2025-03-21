@@ -18,6 +18,7 @@ Este repositorio contiene la configuración necesaria para desplegar un entorno 
    ```bash
    git clone https://github.com/jmunoz-academia/Moodle-Docker.git
    cd Moodle-Docker
+   cd docker
    ```
 2. Construye y levanta los contenedores:
 
