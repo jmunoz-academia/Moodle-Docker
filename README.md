@@ -1,10 +1,10 @@
 # Moodle-Docker
 
-Desarrollo de Moodle en entorno Docker con PHP 8.2 y base de datos MySQL. Versión de MOODLE_402_STABLE.
+Desarrollo de Moodle en entorno Docker con PHP 8.3 y base de datos MySQL.
 
 ## Descripción
 
-Este repositorio contiene la configuración necesaria para desplegar un entorno de desarrollo de Moodle utilizando Docker. El contenedor Docker incluye un servidor Apache, una base de datos MySQL y PHP 8.2 con todas las extensiones necesarias para la instalación y configuración de Moodle.
+Este repositorio contiene la configuración necesaria para desplegar un entorno de desarrollo de Moodle utilizando Docker. El contenedor Docker incluye un servidor Apache, una base de datos MySQL y PHP 8.3 con todas las extensiones necesarias para la instalación y configuración de Moodle.
 
 ## Requisitos
 
@@ -31,7 +31,7 @@ Este repositorio contiene la configuración necesaria para desplegar un entorno 
 
 - **Apache**: Servidor web para alojar Moodle.
 - **MySQL**: Base de datos para almacenar la información de Moodle.
-- **PHP 8.2**: Versión de PHP con todas las extensiones necesarias para Moodle.
+- **PHP 8.3**: Versión de PHP con todas las extensiones necesarias para Moodle.
 
 ## Configuración
 
@@ -74,7 +74,7 @@ volumes:
 
 ## Extensiones de PHP
 
-El contenedor de PHP 8.2 incluye las siguientes extensiones necesarias para Moodle:
+El contenedor de PHP 8.3 incluye las siguientes extensiones necesarias para Moodle:
 
 - mysqli
 - pdo_mysql
