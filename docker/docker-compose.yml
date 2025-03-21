@@ -1,32 +1,35 @@
-name: docker-git
+name: docker-git  # Nombre del contenedor Docker
+
 services:
   mysql:
-    container_name: mysql
+    container_name: mysql  # Nombre del contenedor para MySQL
+    image: mysql:latest  # Imagen de MySQL en su última versión disponible
     environment:
-      - MYSQL_ROOT_PASSWORD=password
-    image: mysql:latest
+      - MYSQL_ROOT_PASSWORD=password  # IMPORTANTE! Establece la contraseña para el usuario root, debes cambiarla
     volumes:
-      - mysql_data:/var/lib/mysql  # Para persistir datos de la base de datos
+      - mysql_data:/var/lib/mysql  # Persistencia de los datos de la base de datos
     networks:
-      - app-network  # Definir red para permitir la comunicación entre servicios
+      - app-network  # Conectar MySQL a la red definida
 
   php:
-    container_name: apache
+    container_name: apache  # Nombre del contenedor para el servidor Apache con PHP
     build:
-      context: ./php-docker
-      dockerfile: Dockerfile
+      context: ./php-docker  # Directorio donde se encuentra el Dockerfile
+      dockerfile: Dockerfile  # Especifica el Dockerfile a usar para construir la imagen
     ports:
-      - 80:80
+      - 80:80  # Mapea el puerto 80 del contenedor al puerto 80 del host
     volumes:
-      - ./public-html:/var/www/html
-      - ./moodledata:/var/www/moodledata
+      - ./public-html:/var/www/html  # Directorio para los archivos públicos del servidor web
+      - ./moodledata:/var/www/moodledata  # Directorio para los datos de Moodle
     depends_on:
-      - mysql
+      - mysql  # Garantiza que MySQL se inicie antes que este servicio
     networks:
-      - app-network
+      - app-network  # Conectar el servidor PHP a la misma red que MySQL
 
+# Definición de la red compartida entre los contenedores
 networks:
-  app-network:  # Definir la red compartida para los contenedores
+  app-network:
 
+# Definición de volúmenes persistentes
 volumes:
-  mysql_data:  # Definir volumen persistente para la base de datos
+  mysql_data:  # Volumen para almacenar datos de MySQL de forma persistente
