@@ -1,4 +1,5 @@
-FROM php:8.3-apache  # Version que se quiere instalar de PHP
+FROM php:8.3-apache
+# Version que se quiere instalar de PHP
 
 # Instalar dependencias del sistema necesarias para las extensiones
 RUN apt-get update && apt-get install -y \
